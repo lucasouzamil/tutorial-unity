@@ -26,6 +26,7 @@ public class PlayerMovemente : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Coletavel") {
             audio.Play();
+            GameController.Collect();
             Destroy(other.gameObject);
         }
     }
