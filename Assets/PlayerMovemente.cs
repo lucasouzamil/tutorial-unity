@@ -3,16 +3,14 @@ using UnityEngine;
 public class PlayerMovemente : MonoBehaviour
 {
     private Rigidbody2D rb;
-    AudioSource audio;
+    AudioSource audioSource;
     public float speed;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -25,7 +23,7 @@ public class PlayerMovemente : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Coletavel") {
-            audio.Play();
+            audioSource.Play();
             GameController.Collect();
             Destroy(other.gameObject);
         }
